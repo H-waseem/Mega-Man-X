@@ -3,10 +3,8 @@ package Collision;
 import bodies.MegaMan;
 import bodies.Rabbit;
 import bodies.Shot;
-import bodies.WalkerBot;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
-import game.RabbitAI;
 
 public class RabbitCollision implements CollisionListener {
 

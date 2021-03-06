@@ -8,8 +8,8 @@ import game.GameLevel;
 
 
 public class PortalEncounter implements CollisionListener {
-    private GameLevel level;
-    private Game game;
+    private final GameLevel level;
+    private final Game game;
 
     public PortalEncounter(GameLevel level, Game game){
         this.level = level;

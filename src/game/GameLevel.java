@@ -11,26 +11,32 @@ import city.cs.engine.World;
 public abstract class GameLevel extends World {
 
     public static SoundClip gameMusic;
-    private MegaMan megaMan;
-    private WalkerBot walkerBot;
+    private final MegaMan megaMan;
+    private final WalkerBot walkerBot;
     private static WalkerBot walkerBot2;
     private static Rabbit rabbit;
-    private ExitPortal exitPortal;
+    private final ExitPortal exitPortal;
 
 
     public GameLevel(Game game){
         megaMan = new MegaMan(this);
         walkerBot = new WalkerBot(this);
-        //walkerBot2 = new WalkerBot(this);
         exitPortal = new ExitPortal(this);
 
         PortalEncounter encounter = new PortalEncounter(this, game);
         megaMan.addCollisionListener(encounter);
         this.addStepListener(new WalkerBotAI(this.getWalkerBot()));
         this.addStepListener(new WalkerBotAI2(this.getWalkerBot2()));
-        this.addStepListener(new RabbitAI(this.getRabbit()));
-        //this.addStepListener(new WalkerBotAI(this.getWalkerBot2()));
+        this.addStepListener(new RabbitAI(getRabbit()));
 
+    }
+
+    public static void setWalkerBot2(WalkerBot walkerBot2) {
+        GameLevel.walkerBot2 = walkerBot2;
+    }
+
+    public static void setRabbit(Rabbit rabbit) {
+        GameLevel.rabbit = rabbit;
     }
 
     public MegaMan getMegaMan(){
@@ -42,7 +48,7 @@ public abstract class GameLevel extends World {
     public WalkerBot getWalkerBot2(){return walkerBot2;}
     public static Rabbit getRabbit(){return rabbit;}
     public ExitPortal getExitPortal() {return exitPortal;}
-    public SoundClip getGameMusic(){return gameMusic;}
+
     public abstract boolean isComplete();
 }
 

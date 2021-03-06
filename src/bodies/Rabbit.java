@@ -2,7 +2,6 @@ package bodies;
 
 import city.cs.engine.*;
 import game.RabbitAI;
-import game.WalkerBotAI;
 
 public class Rabbit extends Walker {
 

@@ -10,11 +10,10 @@ import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
-import java.util.logging.Level;
+
 
 public class GameView extends UserView {
     public Image levelbg;
-    private GameLevel level = Game.getLevel();
 
     public GameView(World w, int width, int height) {
         super(w, width, height);

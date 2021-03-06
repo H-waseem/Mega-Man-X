@@ -30,7 +30,6 @@ public class MegaManController implements KeyListener {
         megaMan = m;
     }
 
-    //
     static {
         try {
             shotSound = new SoundClip("data/Shot sound.wav");
@@ -69,7 +68,6 @@ public class MegaManController implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        int code = e.getKeyCode();
     }
 
     @Override

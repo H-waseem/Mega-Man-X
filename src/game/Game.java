@@ -2,9 +2,6 @@ package game;
 
 import GUI.BGMSlider;
 import GUI.ButtonPanel;
-import GUI.PauseButton;
-import GUI.StartButton;
-import city.cs.engine.DebugViewer;
 import city.cs.engine.UserView;
 import levels.*;
 
@@ -73,7 +70,7 @@ public class Game {
         // make a view
         view = new GameView(level, 1080, 720);
         view.setZoom(20);
-        view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the view
+        view.addMouseListener(new MouseHandler()); //  add some mouse actions add this to the view, so coordinates are relative to the view
 
         megaManController = new MegaManController(level.getMegaMan());
         view.addKeyListener(megaManController);
@@ -81,7 +78,7 @@ public class Game {
         //uncomment this to draw a 1-metre grid over the view
         //view.setGridResolution(1);
 
-        MouseHandler mh = new MouseHandler(level, view);
+        MouseHandler mh = new MouseHandler();
         view.addMouseListener(mh);
         view.addMouseListener(new GiveFocus(view));
         level.addStepListener(new Tracker());
@@ -149,7 +146,7 @@ public class Game {
 
             view.addKeyListener(megaManController);
             view.setZoom(20);
-            view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the view
+            view.addMouseListener(new MouseHandler()); //  add some mouse actions add this to the view, so coordinates are relative to the view
             view.addMouseListener(new GiveFocus(view));
 
             /* Level additions */
@@ -182,7 +179,7 @@ public class Game {
 
             view.addKeyListener(megaManController);
             view.setZoom(20);
-            view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
+            view.addMouseListener(new MouseHandler()); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
             view.addMouseListener(new GiveFocus(view));
 
             /* Level additions */
@@ -221,7 +218,7 @@ public class Game {
 
             view.addKeyListener(megaManController);
             view.setZoom(20);
-            view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
+            view.addMouseListener(new MouseHandler()); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
             view.addMouseListener(new GiveFocus(view));
 
             /* Level additions */
@@ -252,7 +249,7 @@ public class Game {
             //view.setGridResolution(1);
             view.addKeyListener(megaManController);
             view.setZoom(20);
-            view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
+            view.addMouseListener(new MouseHandler()); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
             view.addMouseListener(new GiveFocus(view));
 
             /* Level additions */

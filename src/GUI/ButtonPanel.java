@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class ButtonPanel extends JPanel implements ActionListener {
 
 
-    private static JLabel l2 = new JLabel();
+    private static final JLabel l2 = new JLabel();
 
     public ButtonPanel() {
         this.setPreferredSize(new Dimension(200,500));

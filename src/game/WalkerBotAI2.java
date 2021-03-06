@@ -2,7 +2,6 @@ package game;
 
 import Collision.MissileCollision;
 import bodies.Missile;
-import bodies.WalkerBot;
 import city.cs.engine.StepEvent;
 import city.cs.engine.StepListener;
 import org.jbox2d.common.Vec2;
@@ -10,10 +9,6 @@ import org.jbox2d.common.Vec2;
 public class WalkerBotAI2 implements StepListener {
 
     private static bodies.WalkerBot WalkerBot;
-
-    public static void setWalkerBot(bodies.WalkerBot walkerBot) {
-        WalkerBot = walkerBot;
-    }
 
     public double setNextMove(){
         return Math.ceil(Math.random() * 300);

@@ -2,8 +2,6 @@ package bodies;
 
 import city.cs.engine.*;
 
-import javax.swing.*;
-
 public class MegaMan extends Walker {
     private static final Shape MegaManShape = new PolygonShape(0.72f,2.37f, 2.13f,0.23f, 1.84f,-2.46f, -2.14f,-2.46f, -1.44f,0.34f, 0.28f,2.37f); //Megaman hitbox
 

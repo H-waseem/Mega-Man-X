@@ -8,14 +8,13 @@ import org.jbox2d.common.Vec2;
 import javax.swing.*;
 
 public class Tracker implements StepListener {
-    private GameView view;
-    private MegaMan megaMan;
-    private JFrame frame;
+    private final GameView view;
+    private final MegaMan megaMan;
 
     public Tracker() {
         this.view = Game.getView();
         this.megaMan = Game.getLevel().getMegaMan();
-        this.frame = Game.getFrame();
+        JFrame frame = Game.getFrame();
     }
     public void preStep(StepEvent e) {
 

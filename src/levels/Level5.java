@@ -1,13 +1,13 @@
 package levels;
 
-import Collision.RabbitCollision;
+import Collision.HPCollision;
+import Collision.WalkerCollision;
+import bodies.MegaMan;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
 import game.Game;
 import game.GameLevel;
-import Collision.HPCollision;
-import Collision.WalkerCollision;
 import org.jbox2d.common.Vec2;
 
 public class Level5 extends GameLevel {
@@ -55,9 +55,6 @@ public class Level5 extends GameLevel {
     }
     @Override
     public boolean isComplete() {
-        if (getMegaMan().getHealthPoints() < 11)
-            return true;
-        else
-            return false;
+        return MegaMan.getHealthPoints() < 11;
     }
 }

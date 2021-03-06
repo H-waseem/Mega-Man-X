@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class Tutorial implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("");
+        System.out.println();
         System.out.println("      |<Welcome to the Mega Man X >|");
         System.out.println("___________________________________________________________________");
         System.out.println("* Press A and D to move left and right                            *");

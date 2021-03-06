@@ -1,13 +1,13 @@
 package levels;
 
-import Collision.RabbitCollision;
+import Collision.HPCollision;
+import Collision.WalkerCollision;
+import bodies.MegaMan;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
 import game.Game;
 import game.GameLevel;
-import Collision.HPCollision;
-import Collision.WalkerCollision;
 import org.jbox2d.common.Vec2;
 
 public class Level3 extends GameLevel {
@@ -19,12 +19,12 @@ public class Level3 extends GameLevel {
         new LevelBGMHandler();
 
         // Make ground
-        Shape groundshape = new BoxShape(25, 0.5f);
-        StaticBody ground = new StaticBody(this, groundshape);
+        Shape groundShape = new BoxShape(25, 0.5f);
+        StaticBody ground = new StaticBody(this, groundShape);
         ground.setPosition(new Vec2(-25f, -19.5f));
 
 
-        StaticBody ground2 = new StaticBody(this,groundshape);
+        StaticBody ground2 = new StaticBody(this,groundShape);
         ground2.setPosition(new Vec2(25,-25));
 
         // Make platform
@@ -73,9 +73,6 @@ public class Level3 extends GameLevel {
     }
     @Override
     public boolean isComplete() {
-        if (getMegaMan().getHealthPoints() < 11)
-            return true;
-        else
-            return false;
+        return MegaMan.getHealthPoints() < 11;
     }
 }

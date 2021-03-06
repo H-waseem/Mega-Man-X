@@ -1,6 +1,7 @@
 package levels;
 
 import Collision.RabbitCollision;
+import bodies.MegaMan;
 import bodies.Rabbit;
 import game.Game;
 import game.GameLevel;
@@ -73,10 +74,7 @@ public class Level2 extends GameLevel {
     }
     @Override
     public boolean isComplete() {
-        if (getMegaMan().getHealthPoints() < 11)
-            return true;
-        else
-            return false;
+        return MegaMan.getHealthPoints() < 11;
     }
 }
 

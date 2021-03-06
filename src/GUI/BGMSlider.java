@@ -16,9 +16,6 @@ public class BGMSlider extends JPanel implements ChangeListener {
     public static double volume;
     private static JPanel mainPanel;
 
-    //private GameLevel level = Game.;
-    private static SoundClip gameMusic;
-
     public static BGMSlider createSlider() //Method to creating slider
     {
         new LevelBGMHandler();
@@ -54,6 +51,11 @@ public class BGMSlider extends JPanel implements ChangeListener {
         //f.show();
         return s;
     }
+
+    public static void setMainPanel(JPanel mainPanel) {
+        BGMSlider.mainPanel = mainPanel;
+    }
+
     // if JSlider value is changed
     public void stateChanged(ChangeEvent e)
     {
