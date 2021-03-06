@@ -56,8 +56,8 @@ public class Level4 extends GameLevel {
         StaticBody wall2 = new StaticBody(this, wallShape);
         wall2.setPosition(new Vec2(49.5f, -5));
 
-        //getMegaMan().setPosition(new Vec2(-40, -15));
-        getMegaMan().setPosition(new Vec2(40, 15));
+        getMegaMan().setPosition(new Vec2(-40, -15));
+
         getWalkerBot().destroy();
         walkerBot.setPosition(new Vec2(30,-15));
 
@@ -69,13 +69,11 @@ public class Level4 extends GameLevel {
         Game.getLevel().addStepListener(new RabbitAI(rabbit));
         Game.getLevel().addStepListener(new WalkerBotAI(walkerBot));
         Game.getLevel().addStepListener(new WalkerBotAI2(walkerBot2));
-
-
         getExitPortal().setPosition(new Vec2(36, 5));
 
     }
     @Override
     public boolean isComplete() {
-        return MegaMan.getHealthPoints() < 11;
+        return MegaMan.getKills() == 3;
     }
 }

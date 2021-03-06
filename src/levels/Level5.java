@@ -43,18 +43,15 @@ public class Level5 extends GameLevel {
         StaticBody wall2 = new StaticBody(this, wallShape);
         wall2.setPosition(new Vec2(49.5f, -5));
 
-        //getMegaMan().setPosition(new Vec2(-40, -15));
-        getMegaMan().setPosition(new Vec2(40, 15));
+        getMegaMan().setPosition(new Vec2(-40, -15));
         getWalkerBot().setPosition(new Vec2(30, -15));
 
         getMegaMan().addCollisionListener(new HPCollision(getMegaMan()));
         getWalkerBot().addCollisionListener(new WalkerCollision(getWalkerBot()));
-
-        //getRabbit().addCollisionListener(new RabbitCollision(getRabbit()));
         getExitPortal().setPosition(new Vec2(48, -17));
     }
     @Override
     public boolean isComplete() {
-        return MegaMan.getHealthPoints() < 11;
+        return MegaMan.getKills() == 1;
     }
 }

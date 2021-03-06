@@ -22,7 +22,6 @@ public class LevelBGMHandler {
                 gameMusic = new SoundClip("data/Storm Eagle BGM.wav");   // Open an audio input stream
                 gameMusic.loop();  // Set it to continuous playback (looping)
                 gameMusic.setVolume(0.5);
-                System.out.println(level + "Playing storm");
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                 System.out.println(e);
             }
@@ -33,7 +32,6 @@ public class LevelBGMHandler {
                 gameMusic = new SoundClip("data/Flame Mammoth BGM.wav");   // Open an audio input stream
                 gameMusic.loop();  // Set it to continuous playback (looping)
                 gameMusic.setVolume(0.5);
-                System.out.println(level + "Playing flame");
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                 System.out.println(e);
             }

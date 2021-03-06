@@ -8,42 +8,6 @@ import levels.*;
 import javax.swing.*;
 import java.awt.*;
 
-
-
-/*
-        MAIN:
-        [X] 2x new levels (subclass of common class)
-        [X] player progression through levels
-        [X] significant differences between levels
-        [X] 4x interactive dynamic body (including bodies from M1)
-        [X] background sound track
-        [X] sound in response to an event
-        [X] sounds load efficiently
-        [X] GUI that displays at least 2x player info (e.g. health, score)
-        [X] GUI controls (e.g. pause, restart)
-        [X] encapsulation rules
-        [X] naming conventions
-        [X] well commented code
-        [X] exception handling
-
-        EXTRA:
-        [X] manipulate levels by data / automatic level generation
-        [X] more than 3 levels
-        [X] innovative game behaviour
-        [X] sophisticated bodies (e.g. ghostly bodies, collision filtering, storing bodies)
-        [X] different body behaviour (e.g. angular rotation, change in size, change in movement)
-        [X] different interactions between bodies (e.g. non-player bodies interact with each other)
-        [X] sound controlled by GUI
-        [X] background tracks change between levels
-        [X] use of many sounds in response to events
-        [X] keep player stats between levels (e.g. health) instead of resetting
-        [X] display different GUI properties in different levels
-        [X] custom GUI buttons
-        [X] GUI components placed manually instead of using IntelliJ GUI editor
-        [X] using different layout managers
-        [X] use extra components (e.g. text boxes, drop downs)
-        [X] more GUI functionality (e.g. change levels, control sound) */
-
 public class Game {
 
     public static GameLevel level;
@@ -159,7 +123,6 @@ public class Game {
             updateFrame();
             level.start();
             ButtonPanel.updateLevelText();
-            System.out.println(level);
         }
 
         else if (level instanceof Level2) {
@@ -197,7 +160,6 @@ public class Game {
             frame.pack();
             level.start();
             ButtonPanel.updateLevelText();
-            System.out.println(level);
         }
 
 
@@ -230,7 +192,6 @@ public class Game {
             updateFrame();
             level.start();
             ButtonPanel.updateLevelText();
-            System.out.println(level);
         }
 
         else if (level instanceof Level4) {
@@ -261,11 +222,10 @@ public class Game {
             updateFrame();
             level.start();
             ButtonPanel.updateLevelText();
-            System.out.println(level);
 
         }
         else if (level instanceof Level5) {
-            System.out.println("Well done! Game complete.");
+            System.out.println("|GAME COMPLETE!!!|");
             System.exit(0);
         }
     }
