@@ -4,10 +4,14 @@ import Collision.ShotCollision;
 import bodies.MegaMan;
 import bodies.Shot;
 import city.cs.engine.BodyImage;
+import city.cs.engine.SoundClip;
 import org.jbox2d.common.Vec2;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 public class MegaManController implements KeyListener {
 
@@ -19,8 +23,28 @@ public class MegaManController implements KeyListener {
 
     private Boolean facingRight = true; //A boolean used to determine if the player is facing right or left
 
+    private static SoundClip shotSound;
+    private static SoundClip jumpSound;
+
     public MegaManController(MegaMan m){
         megaMan = m;
+    }
+
+    //
+    static {
+        try {
+            shotSound = new SoundClip("data/Shot sound.wav");
+        } catch (UnsupportedAudioFileException|IOException|LineUnavailableException e) {
+            System.out.println(e);
+        }
+    }
+
+    static {
+        try {
+            jumpSound = new SoundClip("data/Jump sound.wav");
+        } catch (UnsupportedAudioFileException|IOException|LineUnavailableException e) {
+            System.out.println(e);
+        }
     }
 
     // Below are the images of MegaMan and its projectiles________
@@ -77,10 +101,13 @@ public class MegaManController implements KeyListener {
         }
 
         if (code == KeyEvent.VK_W || code == KeyEvent.VK_SPACE) { // Jump if W or space-bar is pressed
-            megaMan.jump(40f); //Jump
+            jumpSound.stop();
+            megaMan.jump(45f); //Jump
+            jumpSound.play();
         }
 
         if (code == KeyEvent.VK_K && facingRight) { //Shoot right if K is pressed and facing right
+            shotSound.stop();
             Vec2 selfPoint = megaMan.getPosition().add(new Vec2(3.6f, 0)); //Position projectile right out of megaman's hitbox
             Shot shot = new Shot(megaMan.getWorld()); //Create new instance of shot
             shot.addImage(shot3Right); //Add image of right shot
@@ -88,8 +115,10 @@ public class MegaManController implements KeyListener {
             shot.setLinearVelocity(new Vec2(40, 0)); // Give the shot some speed
             ShotCollision shotCollision = new ShotCollision(shot); //Adds wall collision
             shot.addCollisionListener(shotCollision); //Wall collision listener
+            shotSound.play();
 
         } if (code == KeyEvent.VK_K && !facingRight){ //Shoot left if K is pressed and facing left
+            shotSound.stop();
             Vec2 selfPoint = megaMan.getPosition().add(new Vec2(-3.6f,0)); //Position projectile left out of megaman's hitbox
             Shot shot = new Shot(megaMan.getWorld()); //Create new instance of shot
             shot.addImage(shot3Left); //Add image of left shot
@@ -97,6 +126,7 @@ public class MegaManController implements KeyListener {
             shot.setLinearVelocity(new Vec2(-40,0)); // Give the shot some speed
             ShotCollision shotCollision = new ShotCollision(shot); //Adds wall collision
             shot.addCollisionListener(shotCollision); //Wall collision listener
+            shotSound.play();
         }
     }
 

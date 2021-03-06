@@ -26,8 +26,6 @@ public class MouseHandler extends MouseAdapter {
         missile.setPosition(worldPoint); //Position missiles
     }
 
-
-
     @Override
     public void mouseClicked(MouseEvent e) {
     }

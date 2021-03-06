@@ -1,5 +1,6 @@
 package levels;
 
+import Collision.RabbitCollision;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
@@ -8,14 +9,10 @@ import game.GameLevel;
 import Collision.HPCollision;
 import Collision.WalkerCollision;
 import game.GameView;
+import game.RabbitAI;
 import org.jbox2d.common.Vec2;
 
-import java.awt.*;
-
-
 public class Level1 extends GameLevel {
-
-    private GameView view;
 
     public Level1(Game game) {
 
@@ -55,12 +52,12 @@ public class Level1 extends GameLevel {
         getMegaMan().setPosition(new Vec2(40, 15));
         getWalkerBot().setPosition(new Vec2(30, -15));
 
+
         getMegaMan().addCollisionListener(new HPCollision(getMegaMan()));
         getWalkerBot().addCollisionListener(new WalkerCollision(getWalkerBot()));
         getExitPortal().setPosition(new Vec2(36, 5));
 
     }
-
 
     //@Override
     //protected void paintBackground(Graphics2D g) {

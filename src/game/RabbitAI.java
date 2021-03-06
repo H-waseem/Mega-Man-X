@@ -2,31 +2,27 @@ package game;
 
 import Collision.MissileCollision;
 import bodies.Missile;
-import bodies.WalkerBot;
+import bodies.Rabbit;
 import city.cs.engine.StepEvent;
 import city.cs.engine.StepListener;
 import org.jbox2d.common.Vec2;
 
-public class WalkerBotAI implements StepListener {
+public class RabbitAI implements StepListener {
 
-    private static bodies.WalkerBot WalkerBot;
+    private static bodies.Rabbit Rabbit;
 
-    public static void setWalkerBot(bodies.WalkerBot walkerBot) {
-        WalkerBot = walkerBot;
-    }
+    public static void setRabbit(bodies.Rabbit rabbit) { Rabbit = rabbit; }
 
     public double setNextMove(){
         return Math.ceil(Math.random() * 300);
     }
 
-    public WalkerBotAI(WalkerBot w){
-        WalkerBot = w;
-    }
+    public RabbitAI(Rabbit r){ Rabbit = r; }
 
     @Override
     public void preStep(StepEvent stepEvent) {
 
-        if(WalkerBot == null){
+        if(Rabbit == null){
             return;
         }
         double nextMove = setNextMove();
@@ -38,13 +34,13 @@ public class WalkerBotAI implements StepListener {
         //}
 
         if (nextMove <= 5){
-            WalkerBot.stopWalking();
-            WalkerBot.startWalking(5);
+            Rabbit.stopWalking();
+            Rabbit.startWalking(5);
             setNextMove();
         }
         if (nextMove == 2){
-            Vec2 selfPoint = WalkerBot.getPosition().add(new Vec2(-3.6f, 0)); //Position projectile right out of megaman's hitbox
-            Missile missile = new Missile(WalkerBot.getWorld()); //Create new instance of missile
+            Vec2 selfPoint = Rabbit.getPosition().add(new Vec2(-3.6f, 0)); //Position projectile right out of megaman's hitbox
+            Missile missile = new Missile(Rabbit.getWorld()); //Create new instance of missile
             //shot.addImage(shot3Right); //Add image of right shot
             missile.setPosition(selfPoint); //position projectile on co ords
             missile.setLinearVelocity(new Vec2(-20, 0)); // Give the shot some speed
@@ -53,13 +49,15 @@ public class WalkerBotAI implements StepListener {
             setNextMove();
         }
         if (nextMove <= 10 && nextMove > 5) {
-            WalkerBot.stopWalking();
-            WalkerBot.startWalking(-5);
+            Rabbit.stopWalking();
+            Rabbit.startWalking(-5);
             setNextMove();
         }
+
     }
 
     @Override
     public void postStep(StepEvent stepEvent) {
+
     }
 }

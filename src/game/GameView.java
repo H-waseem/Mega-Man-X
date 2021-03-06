@@ -11,9 +11,7 @@ import java.util.logging.Level;
 
 public class GameView extends UserView {
     public Image levelbg;
-
     private GameLevel level = Game.getLevel();
-    public Image currentImg;
 
     public GameView(World w, int width, int height) {
         super(w, width, height);

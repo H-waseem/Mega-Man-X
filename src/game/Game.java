@@ -1,6 +1,9 @@
 package game;
 
 import GUI.BGMSlider;
+import bodies.Shot;
+import city.cs.engine.DebugViewer;
+import city.cs.engine.GhostlyFixture;
 import city.cs.engine.UserView;
 import levels.*;
 
@@ -22,11 +25,12 @@ public class Game {
         //GameWorld world = new GameWorld();
 
         level = new Level1(this);
+
         level.addStepListener(new WalkerBotAI(level.getWalkerBot()));
+        //level.addStepListener(new RabbitAI(level.getRabbit()));
 
         // uncomment this to make a debugging view
-        //JFrame debugView = new DebugViewer(level, 650, 720);
-
+        JFrame debugView = new DebugViewer(level, 650, 720);
 
         // make a view
         view = new GameView(level, 1080, 720);
@@ -44,7 +48,7 @@ public class Game {
         view.addMouseListener(new GiveFocus(view));
         level.addStepListener(new Tracker());
 
-        frame = new JFrame("Mega Man X Practice Range");
+        frame = new JFrame("Mega Man X");
 
         /* BUTTONS AND SLIDER */
         //frame.add(frame, BorderLayout.WEST);
@@ -57,7 +61,7 @@ public class Game {
         frame.setLocationByPlatform(true);
 
         wideView = new UserView(level, 500, 150);
-        wideView.setZoom(4);
+        wideView.setZoom(3.7f);
 
         frame.add(wideView, BorderLayout.SOUTH);
 
@@ -88,8 +92,8 @@ public class Game {
     }
 
     public void updateFrame(){
-        wideView = new UserView(level, 900, 100);
-        wideView.setZoom(3);
+        wideView = new UserView(level, 500, 150);
+        wideView.setZoom(3.7f);
         frame.remove(wideView);
         frame.add(wideView, BorderLayout.SOUTH);
         frame.pack();
@@ -98,28 +102,31 @@ public class Game {
     public void goToNextLevel() {
         // Learn switch cases
         if (level instanceof Level1) {
-            /** Remove current */
+            /* Remove current */
             level.stop();
             frame.remove(wideView);
             frame.remove(view);
             GameLevel.gameMusic.stop();
 
-            /** Implement new */
+            /* Implement new */
             level = new Level2(this);
             view = new GameView(level, 1080, 720);
 
-            /** View additions */
+            /* View additions */
+            //uncomment this to draw a 1-metre grid over the view
+            view.setGridResolution(1);
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the view
             view.addMouseListener(new GiveFocus(view));
 
-            /** Level additions */
+            /* Level additions */
             level.addStepListener(new Tracker());
             frame.add(view);
             view.setWorld(level);
 
             megaManController.updateMegaMan(level.getMegaMan());
+
             updateFrame();
             level.start();
             System.out.println(level);
@@ -131,24 +138,33 @@ public class Game {
             frame.remove(view);
             GameLevel.gameMusic.stop();
 
-            /** Implement new */
+            /* Implement new */
             level = new Level3(this);
             view = new GameView(level, 1080, 720);
 
-            /** View additions */
+            /* View additions */
+            //uncomment this to draw a 1-metre grid over the view
+            view.setGridResolution(1);
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
             view.addMouseListener(new GiveFocus(view));
 
-            /** Level additions */
+            /* Level additions */
             level.addStepListener(new Tracker());
             frame.add(view);
             view.setWorld(level);
 
             megaManController.updateMegaMan(level.getMegaMan());
-            updateFrame();
+
+
+            wideView = new UserView(level, 500, 150);
+            wideView.setZoom(2.7f);
+            frame.remove(wideView);
+            frame.add(wideView, BorderLayout.SOUTH);
+            frame.pack();
             level.start();
+
             System.out.println(level);
         }
 
@@ -159,17 +175,19 @@ public class Game {
             frame.remove(view);
             GameLevel.gameMusic.stop();
 
-            /** Implement new */
+            /* Implement new */
             level = new Level4(this);
             view = new GameView(level, 1080, 720);
 
-            /** View additions */
+            /* View additions */
+            //uncomment this to draw a 1-metre grid over the view
+            view.setGridResolution(1);
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
             view.addMouseListener(new GiveFocus(view));
 
-            /** Level additions */
+            /* Level additions */
             level.addStepListener(new Tracker());
             frame.add(view);
             view.setWorld(level);
@@ -186,17 +204,19 @@ public class Game {
             frame.remove(view);
             GameLevel.gameMusic.stop();
 
-            /** Implement new */
+            /* Implement new */
             level = new Level5(this);
             view = new GameView(level, 1080, 720);
 
-            /** View additions */
+            /* View additions */
+            //uncomment this to draw a 1-metre grid over the view
+            view.setGridResolution(1);
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
             view.addMouseListener(new GiveFocus(view));
 
-            /** Level additions */
+            /* Level additions */
             level.addStepListener(new Tracker());
             frame.add(view);
             view.setWorld(level);
