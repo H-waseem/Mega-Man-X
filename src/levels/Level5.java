@@ -23,16 +23,13 @@ public class Level5 extends GameLevel {
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0f, -19.5f));
 
-        // Make platform
-        Shape platformShape = new BoxShape(4, 0.5f);
-        StaticBody platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(36, 2f));
 
         // platform loop
         Shape shape2 = new BoxShape(4f, 0.5f); //Makes 4 platforms on left side with gaps in between to jump through
         for (int y = 0; y < 10; y = y + 8) {
             for (int x = -10; x < 45; x = x + 15) {
                 StaticBody box = new StaticBody(this, shape2);
+                box.rotateDegrees(25);
                 box.setPosition(new Vec2(x - 17, y - 12));
             }
         }
@@ -54,7 +51,7 @@ public class Level5 extends GameLevel {
         getWalkerBot().addCollisionListener(new WalkerCollision(getWalkerBot()));
 
         //getRabbit().addCollisionListener(new RabbitCollision(getRabbit()));
-        getExitPortal().setPosition(new Vec2(36, 5));
+        getExitPortal().setPosition(new Vec2(48, -17));
     }
     @Override
     public boolean isComplete() {

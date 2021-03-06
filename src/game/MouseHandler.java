@@ -20,10 +20,10 @@ public class MouseHandler extends MouseAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) { //when mouse is pressed create a missile at the cursor
-        Missile missile = new Missile(level); //Create new missile instance
-        Point mousePoint = e.getPoint(); // Get mouse co ords
-        Vec2 worldPoint = view.viewToWorld(mousePoint); // Translate to world co ords
-        missile.setPosition(worldPoint); //Position missiles
+        //Missile missile = new Missile(level); //Create new missile instance
+        //Point mousePoint = e.getPoint(); // Get mouse co ords
+        //Vec2 worldPoint = view.viewToWorld(mousePoint); // Translate to world co ords
+        //missile.setPosition(worldPoint); //Position missiles
     }
 
     @Override

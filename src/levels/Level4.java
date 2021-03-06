@@ -2,6 +2,7 @@ package levels;
 
 import Collision.RabbitCollision;
 import bodies.Rabbit;
+import bodies.WalkerBot;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
@@ -10,11 +11,15 @@ import game.GameLevel;
 import Collision.HPCollision;
 import Collision.WalkerCollision;
 import game.RabbitAI;
+import game.WalkerBotAI;
+import game.WalkerBotAI2;
 import org.jbox2d.common.Vec2;
 
 public class Level4 extends GameLevel {
 
     Rabbit rabbit = new Rabbit(this);
+    WalkerBot walkerBot = new WalkerBot(this);
+    WalkerBot walkerBot2 = new WalkerBot(this);
 
     public Level4(Game game){
 
@@ -52,13 +57,19 @@ public class Level4 extends GameLevel {
 
         //getMegaMan().setPosition(new Vec2(-40, -15));
         getMegaMan().setPosition(new Vec2(40, 15));
-        getWalkerBot().setPosition(new Vec2(30, -15));
+        getWalkerBot().destroy();
+        walkerBot.setPosition(new Vec2(30,-15));
 
         getMegaMan().addCollisionListener(new HPCollision(getMegaMan()));
-        getWalkerBot().addCollisionListener(new WalkerCollision(getWalkerBot()));
-        Game.getLevel().addStepListener(new RabbitAI(rabbit));
-
+        walkerBot.addCollisionListener(new WalkerCollision(walkerBot));
+        walkerBot2.addCollisionListener(new WalkerCollision(walkerBot2));
         rabbit.addCollisionListener(new RabbitCollision(rabbit));
+
+        Game.getLevel().addStepListener(new RabbitAI(rabbit));
+        Game.getLevel().addStepListener(new WalkerBotAI(walkerBot));
+        Game.getLevel().addStepListener(new WalkerBotAI2(walkerBot2));
+
+
         getExitPortal().setPosition(new Vec2(36, 5));
 
     }

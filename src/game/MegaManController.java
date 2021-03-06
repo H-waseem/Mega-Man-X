@@ -76,7 +76,6 @@ public class MegaManController implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode(); //Gets last pressed key
 
-
         if (code == KeyEvent.VK_D) { //Walk right if D is pressed and change corresponding values
             megaMan.startWalking(WALKING_SPEED);
             megaMan.removeAllImages();
@@ -92,12 +91,10 @@ public class MegaManController implements KeyListener {
         } if (code == KeyEvent.VK_SHIFT && facingRight && boost > 0) { // Dash/boost Right if J is pressed and facing right and if Boost isn't empty
             megaMan.startWalking(WALKING_SPEED*2f);
             boost--;
-            System.out.println("Boost remaining "+ boost);
 
         } if (code == KeyEvent.VK_SHIFT && !facingRight && boost > 0) { // Dash/boost left if J is pressed and facing left and if Boost isn't empty
             megaMan.startWalking(-WALKING_SPEED*2f);
             boost--;
-            System.out.println("Boost remaining "+ boost);
         }
 
         if (code == KeyEvent.VK_W || code == KeyEvent.VK_SPACE) { // Jump if W or space-bar is pressed

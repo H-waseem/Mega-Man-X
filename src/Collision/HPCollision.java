@@ -2,6 +2,7 @@ package Collision;
 
 import bodies.MegaMan;
 import bodies.Missile;
+import bodies.Rabbit;
 import bodies.WalkerBot;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
@@ -20,7 +21,7 @@ public class HPCollision implements CollisionListener {
             MegaMan.RemoveHP();
             e.getOtherBody().destroy();
         }
-        if (e.getOtherBody() instanceof WalkerBot){ //if Megaman gets hit by a walker bot he loses HP
+        if (e.getOtherBody() instanceof WalkerBot || e.getOtherBody() instanceof Rabbit){ //if Megaman gets hit by a walker bot he loses HP
             MegaMan.RemoveHP();
         }
     }

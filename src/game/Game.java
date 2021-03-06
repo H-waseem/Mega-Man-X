@@ -1,14 +1,51 @@
 package game;
 
 import GUI.BGMSlider;
-import bodies.Shot;
+import GUI.ButtonPanel;
+import GUI.PauseButton;
+import GUI.StartButton;
 import city.cs.engine.DebugViewer;
-import city.cs.engine.GhostlyFixture;
 import city.cs.engine.UserView;
 import levels.*;
 
 import javax.swing.*;
 import java.awt.*;
+
+
+
+/*
+        MAIN:
+        [X] 2x new levels (subclass of common class)
+        [X] player progression through levels
+        [X] significant differences between levels
+        [X] 4x interactive dynamic body (including bodies from M1)
+        [X] background sound track
+        [X] sound in response to an event
+        [X] sounds load efficiently
+        [X] GUI that displays at least 2x player info (e.g. health, score)
+        [X] GUI controls (e.g. pause, restart)
+        [X] encapsulation rules
+        [X] naming conventions
+        [X] well commented code
+        [X] exception handling
+
+        EXTRA:
+        [X] manipulate levels by data / automatic level generation
+        [X] more than 3 levels
+        [X] innovative game behaviour
+        [X] sophisticated bodies (e.g. ghostly bodies, collision filtering, storing bodies)
+        [X] different body behaviour (e.g. angular rotation, change in size, change in movement)
+        [X] different interactions between bodies (e.g. non-player bodies interact with each other)
+        [X] sound controlled by GUI
+        [X] background tracks change between levels
+        [X] use of many sounds in response to events
+        [X] keep player stats between levels (e.g. health) instead of resetting
+        [X] display different GUI properties in different levels
+        [X] custom GUI buttons
+        [X] GUI components placed manually instead of using IntelliJ GUI editor
+        [X] using different layout managers
+        [X] use extra components (e.g. text boxes, drop downs)
+        [X] more GUI functionality (e.g. change levels, control sound) */
 
 public class Game {
 
@@ -27,10 +64,11 @@ public class Game {
         level = new Level1(this);
 
         level.addStepListener(new WalkerBotAI(level.getWalkerBot()));
+        level.addStepListener(new WalkerBotAI2(level.getWalkerBot2()));
         //level.addStepListener(new RabbitAI(level.getRabbit()));
 
         // uncomment this to make a debugging view
-        JFrame debugView = new DebugViewer(level, 650, 720);
+        //JFrame debugView = new DebugViewer(level, 650, 720);
 
         // make a view
         view = new GameView(level, 1080, 720);
@@ -65,7 +103,9 @@ public class Game {
 
         frame.add(wideView, BorderLayout.SOUTH);
 
+        ButtonPanel gp = new ButtonPanel();
 
+        frame.add(gp,BorderLayout.EAST);
         frame.add(BGMSlider.createSlider(), BorderLayout.WEST);
 
 
@@ -76,17 +116,7 @@ public class Game {
         //make the frame visible
         frame.setVisible(true);
 
-        System.out.println("");
-        System.out.println("      |<Welcome to the Mega Man X practice range>|");
-        System.out.println("____________________________________________________________");
-        System.out.println("* Press A and D to move left and right                     *");
-        System.out.println("* Press W or SPACE to jump                                 *");
-        System.out.println("* Press LShift to use a Boost/Dash (Only 3 uses)           *");
-        System.out.println("* Press K to shoot                                         *");
-        System.out.println("* Right or Left click to spawn missiles                    *");
-        System.out.println("* Getting hit by a missile or walking into bots removes HP *");
-        System.out.println("* Shooting the bots eliminates them                        *");
-        System.out.println("____________________________________________________________");
+        ButtonPanel.updateLevelText();
         level.start();// start the level
 
     }
@@ -113,8 +143,10 @@ public class Game {
             view = new GameView(level, 1080, 720);
 
             /* View additions */
+
             //uncomment this to draw a 1-metre grid over the view
-            view.setGridResolution(1);
+            //view.setGridResolution(1);
+
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the view
@@ -129,6 +161,7 @@ public class Game {
 
             updateFrame();
             level.start();
+            ButtonPanel.updateLevelText();
             System.out.println(level);
         }
 
@@ -143,8 +176,10 @@ public class Game {
             view = new GameView(level, 1080, 720);
 
             /* View additions */
+
             //uncomment this to draw a 1-metre grid over the view
-            view.setGridResolution(1);
+            //view.setGridResolution(1);
+
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
@@ -164,7 +199,7 @@ public class Game {
             frame.add(wideView, BorderLayout.SOUTH);
             frame.pack();
             level.start();
-
+            ButtonPanel.updateLevelText();
             System.out.println(level);
         }
 
@@ -180,8 +215,10 @@ public class Game {
             view = new GameView(level, 1080, 720);
 
             /* View additions */
+
             //uncomment this to draw a 1-metre grid over the view
-            view.setGridResolution(1);
+            //view.setGridResolution(1);
+
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
@@ -195,6 +232,7 @@ public class Game {
             megaManController.updateMegaMan(level.getMegaMan());
             updateFrame();
             level.start();
+            ButtonPanel.updateLevelText();
             System.out.println(level);
         }
 
@@ -209,8 +247,9 @@ public class Game {
             view = new GameView(level, 1080, 720);
 
             /* View additions */
+
             //uncomment this to draw a 1-metre grid over the view
-            view.setGridResolution(1);
+            //view.setGridResolution(1);
             view.addKeyListener(megaManController);
             view.setZoom(20);
             view.addMouseListener(new MouseHandler(level, view)); //  add some mouse actions add this to the view, so coordinates are relative to the viewd
@@ -224,6 +263,7 @@ public class Game {
             megaManController.updateMegaMan(level.getMegaMan());
             updateFrame();
             level.start();
+            ButtonPanel.updateLevelText();
             System.out.println(level);
 
         }
@@ -241,7 +281,9 @@ public class Game {
         return frame;
     }
 
-
+    public static void setLevel(GameLevel level) {
+        Game.level = level;
+    }
 
     /** Run the game. */
     public static void main(String[] args) { new Game();

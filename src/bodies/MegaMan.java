@@ -28,15 +28,14 @@ public class MegaMan extends Walker {
 
     public static void setKills() {
         kills++;
-        System.out.println("KILLS: "+ kills);
     }
 
     public void RemoveHP() { //Function to remove HP when mega man gets hit
         healthPoints--;
-        System.out.println("HP remaining:" + healthPoints);
         if (healthPoints <= 1) { //Ends game if HP is below 1
             System.out.println("GAME OVER");
             getWorld().stop(); //Make world stop
+            System.exit(0);
         }
     }
 

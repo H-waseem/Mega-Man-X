@@ -30,7 +30,7 @@ public class Level2 extends GameLevel {
         // Make platforms
         Shape platformShape = new BoxShape(4, 0.5f);
         StaticBody platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(36, 2f));
+        platform1.setPosition(new Vec2(30, 2f));
 
 
         Shape platform2Shape = new BoxShape(8,0.5f);
@@ -57,7 +57,7 @@ public class Level2 extends GameLevel {
         wall2.setPosition(new Vec2(49.5f, -5));
 
         //getMegaMan().setPosition(new Vec2(-40, -15));
-        getMegaMan().setPosition(new Vec2(40, 15));
+        getMegaMan().setPosition(new Vec2(37, 15));
         getWalkerBot().setPosition(new Vec2(30, -15));
 
         getMegaMan().addCollisionListener(new HPCollision(getMegaMan()));
@@ -68,7 +68,7 @@ public class Level2 extends GameLevel {
 
         rabbit.addCollisionListener(new RabbitCollision(rabbit));
 
-        getExitPortal().setPosition(new Vec2(36, 5));
+        getExitPortal().setPosition(new Vec2(30, 5));
 
     }
     @Override
