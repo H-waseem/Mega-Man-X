@@ -1,6 +1,6 @@
 package game;
 
-import Collision.MissileCollision;
+import collision.MissileCollision;
 import bodies.Missile;
 import bodies.WalkerBot;
 import city.cs.engine.StepEvent;
@@ -31,19 +31,13 @@ public class WalkerBotAI implements StepListener {
         }
         double nextMove = setNextMove();
 
-        //System.out.println("Move");
-
-        //switch (nextMove){
-        //ADD SWITCH INSTEAD OF IFs
-        //}
-
         if (nextMove <= 5){
             WalkerBot.stopWalking();
             WalkerBot.startWalking(5);
             setNextMove();
         }
         if (nextMove == 2){
-            Vec2 selfPoint = WalkerBot.getPosition().add(new Vec2(-3.6f, 0)); //Position projectile right out of megaman's hitbox
+            Vec2 selfPoint = WalkerBot.getPosition().add(new Vec2(-3.6f, 0)); //Position projectile right out of walker's hitbox
             Missile missile = new Missile(WalkerBot.getWorld()); //Create new instance of missile
             //shot.addImage(shot3Right); //Add image of right shot
             missile.setPosition(selfPoint); //position projectile on co ords

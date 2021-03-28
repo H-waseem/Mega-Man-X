@@ -1,12 +1,12 @@
 package levels;
 
-import Collision.RabbitCollision;
+import collision.RabbitCollision;
 import bodies.MegaMan;
 import bodies.Rabbit;
 import game.Game;
 import game.GameLevel;
-import Collision.HPCollision;
-import Collision.WalkerCollision;
+import collision.HPCollision;
+import collision.WalkerCollision;
 import game.RabbitAI;
 import org.jbox2d.common.Vec2;
 import city.cs.engine.BoxShape;
@@ -68,7 +68,7 @@ public class Level2 extends GameLevel {
 
         rabbit.addCollisionListener(new RabbitCollision(rabbit));
 
-        getExitPortal().setPosition(new Vec2(30, 5));
+        getExitPortal().setPosition(new Vec2(48, -17));
 
     }
     @Override

@@ -1,6 +1,6 @@
 package levels;
 
-import Collision.RabbitCollision;
+import collision.RabbitCollision;
 import bodies.MegaMan;
 import bodies.Rabbit;
 import bodies.WalkerBot;
@@ -9,8 +9,8 @@ import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
 import game.Game;
 import game.GameLevel;
-import Collision.HPCollision;
-import Collision.WalkerCollision;
+import collision.HPCollision;
+import collision.WalkerCollision;
 import game.RabbitAI;
 import game.WalkerBotAI;
 import game.WalkerBotAI2;
@@ -69,7 +69,7 @@ public class Level4 extends GameLevel {
         Game.getLevel().addStepListener(new RabbitAI(rabbit));
         Game.getLevel().addStepListener(new WalkerBotAI(walkerBot));
         Game.getLevel().addStepListener(new WalkerBotAI2(walkerBot2));
-        getExitPortal().setPosition(new Vec2(36, 5));
+        getExitPortal().setPosition(new Vec2(48, -17));
 
     }
     @Override

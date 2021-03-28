@@ -13,7 +13,7 @@ import static game.GameLevel.gameMusic;
 public class LevelBGMHandler {
 
 
-    public LevelBGMHandler() {
+    public LevelBGMHandler() { //Checks what level is currently loaded and loads and plays the tracks accordingly
 
         GameLevel level = Game.getLevel();
 
@@ -29,7 +29,7 @@ public class LevelBGMHandler {
 
         else if (level instanceof Level2) {
             try {
-                gameMusic = new SoundClip("data/Flame Mammoth BGM.wav");   // Open an audio input stream
+                gameMusic = new SoundClip("data/Spark Mandrill BGM.wav");   // Open an audio input stream
                 gameMusic.loop();  // Set it to continuous playback (looping)
                 gameMusic.setVolume(0.5);
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -39,7 +39,7 @@ public class LevelBGMHandler {
 
         else if (level instanceof Level3) {
             try {
-                gameMusic = new SoundClip("data/Boomer Kuwanger BGM.wav");   // Open an audio input stream
+                gameMusic = new SoundClip("data/Flame Mammoth BGM.wav");   // Open an audio input stream
                 gameMusic.loop();  // Set it to continuous playback (looping)
                 gameMusic.setVolume(0.5);
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {

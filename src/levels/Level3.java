@@ -1,7 +1,7 @@
 package levels;
 
-import Collision.HPCollision;
-import Collision.WalkerCollision;
+import collision.HPCollision;
+import collision.WalkerCollision;
 import bodies.MegaMan;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;

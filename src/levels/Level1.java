@@ -1,7 +1,7 @@
 package levels;
 
-import Collision.HPCollision;
-import Collision.WalkerCollision;
+import collision.HPCollision;
+import collision.WalkerCollision;
 import bodies.MegaMan;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
@@ -52,7 +52,7 @@ public class Level1 extends GameLevel {
 
         getMegaMan().addCollisionListener(new HPCollision(getMegaMan()));
         getWalkerBot().addCollisionListener(new WalkerCollision(getWalkerBot()));
-        getExitPortal().setPosition(new Vec2(36, 5));
+        getExitPortal().setPosition(new Vec2(48, -17));
 
     }
 

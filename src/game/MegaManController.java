@@ -1,6 +1,6 @@
 package game;
 
-import Collision.ShotCollision;
+import collision.ShotCollision;
 import bodies.MegaMan;
 import bodies.Shot;
 import city.cs.engine.BodyImage;

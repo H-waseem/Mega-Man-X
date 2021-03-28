@@ -1,6 +1,6 @@
 package game;
 
-import Collision.MissileCollision;
+import collision.MissileCollision;
 import bodies.Missile;
 import bodies.Rabbit;
 import city.cs.engine.StepEvent;

@@ -27,6 +27,9 @@ public class MegaMan extends Walker {
     public static void setKills() {
         kills++;
     }
+    public static void loadKills(int k) {
+        kills = k;
+    }
 
     public void RemoveHP() { //Function to remove HP when mega man gets hit
         healthPoints--;
